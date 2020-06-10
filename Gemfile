@@ -46,7 +46,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'haml-rails'
 gem 'rails-i18n'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 gem 'rack-cors'
 gem 'carrierwave'
 gem "payjp"
