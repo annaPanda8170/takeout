@@ -17,8 +17,8 @@
       -webkit-appearance: none;
       appearance: none;
       font-size: 22px;
-      border: 2px solid black;
-      background-color: black;
+      // border: 2px solid black;
+      // background-color: black;
       width: 600px;
     }
     & input[type="submit"]{
@@ -97,10 +97,16 @@ input:-webkit-autofill {
 }
 
 select{
-  display: block;
+  // display: block;
   border-bottom: 3px solid #b4bea3;
   border-right: 1px solid #b4bea3;
   margin: 30 0;
+  padding: 0 10px;
+  height: 37px;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 22px;
 }
 .signinLogin__content__select{
   
