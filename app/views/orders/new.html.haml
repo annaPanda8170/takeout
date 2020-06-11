@@ -1,0 +1,37 @@
+= stylesheet_link_tag "orders", media: "all"
+= javascript_pack_tag "cart"
+#data{data: {login: "#{@login}"}}
+.newTitle
+  = Restaurant.find(@restaurant).name
+  .newTitle__last
+    の料理一覧
+.newContainer
+  = form_with model: @cart, local: true, url: orders_path do |f|
+    = f.hidden_field :restaurant_id, value: @restaurant
+    - @cuisines.each_with_index do |c, i|
+      .cuisine{id: "cuisine#{i}", data: {id: c.id, price: c.price}}
+        - if c.image.length != 0
+          - img = c.image.url
+        - else
+          - img = '/assets/noImage.png'
+        .cuisine__image{style: "background-image: url(#{img}); background-size: cover"}
+        .cuisine__bottom
+          .cuisine__bottom__name
+            = c.name
+          .cuisine__bottom__discription
+            = c.discription
+          .cuisine__bottom__price
+            = c.price
+            円
+    #cuisinesTotalSet
+      -if !restaurant_signed_in?
+        #cusinesTitle
+          合計
+        #cuisinesTotal
+          0
+        #cuisinesYen
+          円
+    -if !restaurant_signed_in?
+      .newButtons
+        = f.submit "買い物かごに入れて店舗一覧に戻る", name: "which_submit", class: "newButtons__button"
+        = f.submit "会計", name:"which_submit", class: "newButtons__button"

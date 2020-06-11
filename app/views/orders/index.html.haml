@@ -1,2 +1,40 @@
-%div こんばんわ
-%i.fas.fa-plus.fa-fw
+= stylesheet_link_tag "orders", media: "all"
+= javascript_pack_tag "googlemap_guest"
+= javascript_pack_tag "slide"
+.slide
+  .slide__images
+    .slide__images__link.slideImage1
+      .slideImage1__mainImage
+      .slideImage1__message
+        スマホで簡単 
+        %span
+        ログイン不要
+        %br
+        事前注文で待たずに
+        %span
+        テイクアウト
+    .slide__images__link.slideImage2
+      .slideImage2__mainImage
+.category
+  .category__title.titles
+    %i.fas.fa-utensils
+    ジャンルで探す
+  - Restaurant.categories.to_a.each do |c|
+    = link_to c[0], order_path(c[1]), class: "category__link"
+.geolocation
+  .geolocation__title.titles
+    %i.fas.fa-street-view
+    .geolocation__title__message
+      現在地を取得して
+      %br
+      = form_with  do |f|
+        = f.select :meter, [*1..15], {}, id: "geolocation__meter"
+      km以内で探す
+  .geolocation__buttonContainer
+    .geolocation__button
+      実行
+  - @restaurants.each do |r|
+    = link_to new_order_path(r.id), id: "restaurant#{r.id}", class: "restaurant" do
+      = render partial: "restaurant_card", locals: {restaurant: r}
+  .restaurant#restaurant__none
+    ※該当のレストランはございません

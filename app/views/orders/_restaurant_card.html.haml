@@ -1,0 +1,24 @@
+.card
+  -# なぜnilで出来ないのか理解できない
+  - if restaurant.image.length != 0
+    - img = restaurant.image.url
+  - else
+    - img = '/assets/noImage.png'
+  .card__left{style: "background-image: url(#{img}); background-size: cover"}
+    .card__left__mask
+    -# - if restaurant.image
+    -#   = image_tag ,class: "card__left__image"
+    -# - else
+    -#   = image_tag "noImage.png",class: "card__left__image"
+  .card__right
+    .card__right__info.card__right__name
+      = restaurant.name
+    .card__right__info.card__right__category
+      .card__right__category__text
+        = restaurant.category
+    .card__right__info.card__right__time
+      = restaurant.place.start.strftime("%H:%M")
+      〜
+      = restaurant.place.last.strftime("%H:%M")
+    .card__right__info.card__right__address
+      = restaurant.place.address.delete!("日本、").sub!(/ /, "\n") 

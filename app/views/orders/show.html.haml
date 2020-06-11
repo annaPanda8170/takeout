@@ -1,0 +1,9 @@
+= stylesheet_link_tag "orders", media: "all"
+.showTitle
+  = @category
+  .showTitle__last
+    の店一覧
+.showContainer
+  - @restaurants.each do |r|
+    = link_to new_order_path(r.id), class: "restaurantShow" do
+      = render partial: "restaurant_card", locals: {restaurant: r}

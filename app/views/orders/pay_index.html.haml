@@ -1,0 +1,32 @@
+= stylesheet_link_tag "orders", media: "all"
+.resTitle
+  未会計一覧
+- @answer.each do |res|
+  = link_to pay_new_orders_path(res[0].id),{ class: "resWrapper"} do
+    .resWrapper__left
+      .resWrapper__left__name
+        = res[0].name
+      .resWrapper__left__address
+        = res[0].place.address
+      .resWrapper__left__time
+        = res[0].place.start.strftime("%H:%M")
+        〜
+        = res[0].place.last.strftime("%H:%M")
+    .resWrapper__right
+      - total = 0
+      - res[1].each do |cui|
+        .orderCuisine
+          .orderCuisine__name.resWrapper__right__name
+            = cui[0].name
+          .orderCuisine__priceNumber
+            単価
+            = cui[0].price
+            円
+            ×
+            = cui[1]
+            個
+            - total += cui[0].price * cui[1]
+      .orderTotal
+        合計  
+        = total
+        円 

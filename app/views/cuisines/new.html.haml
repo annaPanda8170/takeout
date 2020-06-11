@@ -1,0 +1,29 @@
+= stylesheet_link_tag "cuisines", media: "all"
+.newCuisinesContainer
+  .newCuisinesTitle
+    料理登録
+  = form_with model: @cuisine, local: true, class: "newCuisinesForm" do |c|
+    .newCuisinesForm__content
+      .newCuisinesForm__content__title
+        料理名
+      = c.text_field :name
+    .newCuisinesForm__content
+      .newCuisinesForm__content__title
+        説明
+      = c.text_area :discription
+    .newCuisinesForm__content
+      = c.label :image, "料理画像アップロード", class: "image_input_btn"
+      = c.file_field :image, class: "image_form"
+    .newCuisinesForm__content
+      .newCuisinesForm__content__title
+        単価
+      = c.number_field :price
+      %span
+        円（税込）
+    .newCuisinesForm__content
+      .newCuisinesForm__content__title
+        調理時間
+      = c.number_field :cook_time
+      %span
+        分
+    = c.submit "登録"
