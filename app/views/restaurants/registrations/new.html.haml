@@ -1,21 +1,67 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "restaurants/shared/links"
+= stylesheet_link_tag 'devise', media: 'all'
+.signinLogin
+  = form_for(@restaurant, url: restaurant_registration_path) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .signinLogin__content
+      = f.label :name, "店名"
+      %br/
+      = f.text_field :name, autofocus: true, class: "signinLogin__content__text"
+    .signinLogin__content
+      = f.label :category, "ジャンル"
+      %br/
+      = f.select :category, Restaurant.categories.keys.to_a, prompt: "選択してください", class: "signinLogin__content__select"
+    .signinLogin__content
+      = f.label :email, "Eメール"
+      %br/
+      = f.email_field :email, autocomplete: "email", class: "signinLogin__content__text"
+    .signinLogin__content
+      = f.label :password, "パスワード（6文字以上）"
+      - if @minimum_password_length
+        %em
+          -# (#{@minimum_password_length} characters minimum)
+      %br/
+      = f.password_field :password, autocomplete: "new-password", class: "signinLogin__content__text"
+    .signinLogin__content
+      = f.label :password_confirmation, "パスワード確認"
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "signinLogin__content__text"
+    .signinLogin__content.signinLogin__image
+      = f.label :image, "店舗イメージをアップロード", class: "image_input_btn"
+      = f.file_field :image, class: "image_form"
+    .signinLogin__content.signinLogin__signup
+      = f.submit "Sign up"
+
+
+
+
+-# -# = javascript_pack_tag 'aaa'
+-# %h2 Sign uppp
+-# = form_for(@restaurant, url: restaurant_registration_path) do |f|
+-#   = render "devise/shared/error_messages", resource: resource
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :name
+-#     %br/
+-#     = f.text_field :name
+-#   .field
+-#     = f.label :category
+-#     %br/
+-#     = f.select :category, Restaurant.categories.keys.to_a, prompt: "選択してください"
+-#     = f.file_field :image
+-#   .field
+-#     = f.label :password
+-#     - if @minimum_password_length
+-#       %em
+-#         (#{@minimum_password_length} characters minimum)
+-#     %br/
+-#     = f.password_field :password, autocomplete: "new-password"
+-#   .field
+-#     = f.label :password_confirmation
+-#     %br/
+-#     = f.password_field :password_confirmation, autocomplete: "new-password"
+-#   .actions
+-#     = f.submit "Sign up"
+-# = render "devise/shared/links"

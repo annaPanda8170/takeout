@@ -1,0 +1,92 @@
+= stylesheet_link_tag "orders", media: "all"
+= javascript_pack_tag "order"
+.payNewTitle
+  .payNewTitle__first
+    = @restaurant.name
+  .payNewTitle__last
+    のオーダー手続き
+.payNewAddress
+  = @restaurant.place.address
+.payNewTime
+  = @restaurant.place.start.strftime("%H:%M")
+  〜
+  = @restaurant.place.last.strftime("%H:%M")
+-# ########↓↓ 以下計算 ↓↓###########################
+- fast_time = ""
+- total = 0
+- longest = 0
+- @cuisine_number_array.each_with_index do |c, i|
+  - cook_time =  Cuisine.find(c[0]).cook_time
+  - longest = cook_time if longest < cook_time
+  - total +=  Cuisine.find(c[0]).price * c[1]
+-# ########↑↑ 以上計算 ↑↑################################
+
+
+= form_with model: @order, local: true, url: pay_create_orders_path,id: "payNewForm" do |f|
+  .leftContainer
+    - @cuisine_number_array.each_with_index do |c, i|
+      - cuisine_data = Cuisine.find(c[0])
+      .orderCuisine{id: "cuisine#{i}", data: {id: cuisine_data.id, number: c[1], price: cuisine_data.price}}
+        .orderCuisine__name
+          = cuisine_data.name
+        .orderCuisine__priceNumber
+          単価
+          = cuisine_data.price
+          円
+          ×
+          .orderCuisine__priceNumber__price{style:"display:inline-block;"}
+          個
+        .orderCuisine__link{style:"display:inline-block;", data:{id: i}}
+          %i.fas.fa-times-circle
+    .orderTotal
+      合計
+      #total.orderTotal{style:"display:inline-block; border: none;"}
+        = total
+      円
+    
+  -# ########↓↓ 以下計算 ↓↓###########################
+  - now_plus_gongest_time = Time.now + longest * 60
+  - hour = now_plus_gongest_time.hour
+  - minute = 0
+  - if now_plus_gongest_time.min < 15
+    - minute = 15
+  - elsif now_plus_gongest_time.min < 30
+    - minute = 30
+  - elsif now_plus_gongest_time.min < 45
+    - minute = 45
+  - else
+    - minute = 0
+    - hour += 1
+  - if minute == 0
+    - minute = "00"
+  - fast_time = "#{hour}:#{minute}"
+  -# ########↑↑ 以上計算 ↑↑################################
+
+  .rightContainer
+    .rightContainer__time
+      最短で
+      = longest
+      分後に
+      %span
+        準備出来ます
+      %br
+      受け取り時間を
+      %span
+        ご入力ください
+    .rightContainer__geolocation
+      #payNew__geolocation__button
+        現在地を取得して
+        %br
+        移動時間を計測する
+    .rightContainer__answer
+      受け取り場所まで
+      .rightContainer__answer__walk
+        徒歩で
+        #walk
+      .rightContainer__answer__car
+        車で
+        #drive
+    = f.time_field :time, step: 900, value: fast_time, class: "rightContainer__form", id: "order_start", style:"border-color: darkred;"
+    :plain
+      <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_e080e94ef9e239d762e67b78"></script>
+#data_set{data: {lat1: @lat, lng1: @lng, lat2: @restaurant.place.latitude, lng2: @restaurant.place.longitude, fasttime: fast_time}}

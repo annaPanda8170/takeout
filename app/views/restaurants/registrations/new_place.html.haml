@@ -1,0 +1,27 @@
+= stylesheet_link_tag "devise", media: "all"
+= javascript_pack_tag "googlemap_restaurant"
+= form_for(@place, url: places_path, method: :post) do |f|
+  = render "devise/shared/error_messages", resource: @place
+  .signinLogin__content
+    = f.label :start, "開店時間"
+    %br/
+    = f.time_field :start, step: 900, value: "09:00"
+  .signinLogin__content
+    = f.label :last, "閉店時間"
+    %br/
+    = f.time_field :last, step: 900, value: "21:00"
+  .geolocation
+    .arrow
+      .arrowUpper
+      .arrowDowner
+    .geolocation__button
+      現在地を取得します
+  .signinLogin__content
+    = f.label :address, "店舗住所"
+    %br/
+    = f.text_area :address, id: "address"
+    -# = f.hidden_field :latitude
+    -# = f.hidden_field :longitude
+  .signinLogin__content.signinLogin__button
+    = f.submit "Sign up"
+-# = render "devise/shared/links"

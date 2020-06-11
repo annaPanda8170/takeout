@@ -1,0 +1,23 @@
+= stylesheet_link_tag "orders", media: "all"
+
+.newTitle
+  = current_restaurant.name
+  .newTitle__last
+    の料理一覧
+.newContainer
+  = link_to "" do
+    - @cuisines.each_with_index do |c, i|
+      .cuisine{id: "cuisine#{i}", data: {id: c.id, price: c.price}}
+        - if c.image.length != 0
+          - img = c.image.url
+        - else
+          - img = '/assets/noImage.png'
+        .cuisine__image{style: "background-image: url(#{img}); background-size: cover"}
+        .cuisine__bottom
+          .cuisine__bottom__name
+            = c.name
+          .cuisine__bottom__discription
+            = c.discription
+          .cuisine__bottom__price
+            = c.price
+            円
