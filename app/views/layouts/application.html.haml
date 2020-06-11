@@ -1,12 +1,81 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", name: "viewport"}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %title Seventy
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'reset', media: 'all'
+    -# %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}
+    = javascript_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag "header"
   %body
-    = yield
+    - if restaurant_signed_in?
+      .loginHeader
+        .loginHeader__title
+          = current_restaurant.name
+          様で
+          %span
+            ログイン中
+        .loginHeader__container
+          -if request.path != cuisines_path
+            = link_to "店舗管理画面TOP", cuisines_path, class: "loginHeader__cuisines"
+          - else
+            = link_to "料理登録", new_cuisine_path, class: "loginHeader__cuisines"
+          %span
+            = link_to "ログアウト", destroy_restaurant_session_path, method: :delete, class: "loginHeader__logout"
+    %header.header
+      = link_to root_path, id: "headerLink" do
+        = image_tag "logo.png"
+      - if request.path == new_restaurant_session_path
+        .header__signinLogin
+          = link_to "ログイン", new_restaurant_session_path, class: "footer__info__left header__info__left"
+          = link_to "会員登録", new_restaurant_registration_path, class: "footer__info__right header__info__right"
+      - elsif request.path == new_restaurant_registration_path
+        .header__signinLogin
+          = link_to "ログイン", new_restaurant_session_path, class: "footer__info__right header__info__right"
+          = link_to "会員登録", new_restaurant_registration_path, class: "footer__info__left header__info__left"
+      - elsif !restaurant_signed_in?
+        - grandTotal = 0
+        - if session[:cart] && session[:cart] != []
+          .header__hover
+            - session[:cart].each do |set|
+              =link_to pay_new_orders_path(set[0]), class: "header__hover__restaurant" do
+                .header__hover__restaurant__name
+                  = Restaurant.find(set[0]).name
+                  - total = 0
+                  - set[1].each do |cart|
+                    - CartsCuisine.where(cart_id: cart).each do |cart|
+                      - total += cart.cuisine.price * cart.number
+                      - grandTotal += cart.cuisine.price * cart.number
+                .header__hover__restaurant__price
+                  = total
+                  円
+                %object
+                  = link_to order_path(set[0]), method: :delete, class: "fa-trash-alt__container" do 
+                    %i.fas.fa-trash-alt
+          = link_to pay_index_orders_path, class: "header__cart" do
+            %i.fas.fa-cart-arrow-down
+            .header__cart__text
+              = session[:cart].length
+              店舗  合計
+              = grandTotal
+              円
+        - else
+          .header__cart
+            %i.fas.fa-cart-arrow-down
+            .header__cart__text
+              カートは空です
+    .main
+      = yield
+    - if !restaurant_signed_in? && !current_page?(new_restaurant_registration_path) && !current_page?(new_restaurant_session_path) && request.path != places_path
+      %footer.footer
+        .footer__info
+          = link_to "店舗新規登録", new_restaurant_registration_path, class: "footer__info__left"
+          = link_to "店舗ログイン", new_restaurant_session_path, class: "footer__info__right"
+      
+      
+      
+      

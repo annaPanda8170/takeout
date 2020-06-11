@@ -57,6 +57,8 @@
   - else
     - minute = 0
     - hour += 1
+  -if hour < 10
+    - hour = "0#{hour}"
   - if minute == 0
     - minute = "00"
   - fast_time = "#{hour}:#{minute}"
