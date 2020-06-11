@@ -1,3 +1,804 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "colors";
+
+
+.slide{
+  margin-top: 100px;
+  height: 390px;
+  overflow: hidden;
+  position: relative;
+  &__images{
+    height: 100%;
+    position: relative;
+    &__link{
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
+.slideImage1{
+  position: relative;
+  &__mainImage{
+    height: 390px;
+    width: 100vw;
+    background: center;
+    background-image: image-url("slide.jpg");
+    background-size: contain;
+    background-position: 50% 0%;
+    filter: blur(5px);
+    font-weight: bold;
+  }
+  &__message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 40px;
+    line-height: 1.8em;
+  }
+}
+
+.slideImage2{
+  left: 100%;
+  &__mainImage{
+    height: 390px;
+    width: 100vw;
+    background: center;
+    background-image: image-url("noImage.png");
+    position: relative;
+    &__subImage{
+      display: block;
+      height: 390px;
+      transform: translateX(-50%);
+      position: absolute;
+      top: 0;
+      left: 62.5%;
+    }
+    // &__title, &__explanation, &__app, &__google{
+    //   position: absolute;
+    //   z-index: 100;
+    //   bottom: 35px;
+    // }
+    // &__title{
+    //   line-height: 1.4em;
+    //   font-size: 60px;
+    //   font-weight: bolder;
+    //   top: 32px;
+    //   left: 26.8%;
+    // }
+    // &__explanation{
+    //   line-height: 1.8em;
+    //   font-size: 18px;
+    //   top: 215px;
+    //   left: 26.8%;
+    // }
+    // &__app{
+    //   width: 170px;
+    //   left: 26.8%;
+    // }
+    // &__google{
+    //   width: 170px;
+    //   left: 37.4%;
+    // }
+  }
+}
+
+
+
+.titles{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 50px;
+  background-color: white;
+  padding: 0 50px;
+  line-height: 1.6em;
+}
+
+.category{
+  position: relative;
+  max-width: 80vw;
+  margin: 210px auto;
+  border: 1px solid lightgrey;
+  padding: 110px 160px;
+  text-align: center;
+  &__title{
+    min-width: 530px;
+  }
+  &__link{
+    display: inline-block;
+    border: 1px solid lightgrey;
+    padding: 10px 15px;
+    margin: 14px;
+    border-radius: 2px;
+    font-size: 27px;
+    // &:nth-of-type(even){
+    //   margin: 12px 30px;
+    // }
+  }
+}
+.geolocation{
+  position: relative;
+  max-width: 80vw;
+  margin: 210px auto;
+  border: 1px solid lightgrey;
+  padding: 165px 50px 110px;
+  text-align: center;
+  &__title{
+    min-width: 670px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__message{
+      font-size: 50px;
+      & form{
+        display: inline-block;
+        margin-right: 20px;
+        & select{
+          vertical-align: top;
+          display: inline-block;
+          // vertical-align: middle;
+          // padding-right: 1.6em;
+          cursor: pointer;
+          padding: 0 25px 0 15px;
+          // -webkit-appearance: none;
+          // appearance: none;
+          font-size: 40px;
+          border: 2px solid black;
+          line-height: 1.6em;
+        }
+      }
+    }
+  }
+  &__buttonContainer{
+    text-align: center;
+  }
+  &__button{
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 30px;
+    background-color: $red2;
+    color: white;
+    border: 4px solid $red2;
+    margin: 0 auto 60px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+.restaurant{
+  display: none;
+  // display:inline-block;
+  margin: 50px auto;
+}
+
+.fa-utensils{
+  font-size: 50px;
+  margin-right: 20px;
+  color: $red2;
+  // border: 4px solid red;
+  // border-radius: 50%;
+}
+.fa-street-view{
+  margin-right:45px;
+  font-size: 60px;
+  color: $red2;
+}
+
+
+@media screen and (max-width:1400px){
+  .category{
+    padding: 110px 100px;
+  }
+  .slideImage1{
+    &__mainImage{
+      background-size: cover;
+    }
+  }
+}
+@media screen and (max-width:1220px){
+  .slideImage1{
+    &__message{
+      font-size: 24px;
+    }
+  }
+}
+@media screen and (max-width:767px){
+  .slide{
+    margin-top: 50px
+  }
+  .slideImage1__message{
+    left: 10%;
+    transform: translateX(0%) translateY(-50%);
+    & > span{
+      display: block;
+    }
+  }
+  .category{
+    padding: 110px 10px;
+    margin-top: 90px;
+    &__link{
+      font-size: 19px;
+    }
+    &__title{
+      min-width: 100vw;
+    }
+  }
+  .titles{
+    font-size: 34px;
+  }
+  // .geolocation__title{
+  //   width: 10px;
+  // }
+  .geolocation__title__message{
+    font-size: 25px;
+  }
+  .geolocation__title{
+      min-width: 100vw;
+  }
+  .geolocation__title__message form select{
+    padding: 0 8px 0 3px;
+    font-size: 24px;
+  }
+  .fa-street-view{
+    margin-right:5px;
+  }
+}
+
+@media screen and (max-width:767px){
+  .titles{
+    font-size: 23px;
+    padding: 15px;
+  }
+  .category{
+    padding: 80px 4px;
+  }
+  .fa-street-view{
+    margin-right:3px;
+    font-size: 35px;
+  }
+}
+
+.card{
+  position: relative;
+  height: 230px;
+  width: 700px;
+  border-radius: 65px 0px 65px 0px/65px 0px 65px 0px;
+  border: 1px solid lightgrey;
+  &__left, &__right{
+    // width: 50%;
+    height: 100%;
+    // display: inline-block;
+    float: left;
+  }
+  &__left{
+    width: 50%;
+    font-size: 0;
+    position: relative;
+    &__mask{
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(to right, transparent,white);
+    }
+  }
+  &__right{
+    padding: 15px 15px 15px 0;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    text-align: center;
+    &__info{
+      line-height: 1.7em;
+    }
+    &__name{
+      font-size: 26px;
+    }
+    &__category{
+      padding-right: 10px;
+      text-align: right;
+      &__text{
+        display: inline-block;
+        color: grey;
+        font-size: 18px;
+        border-bottom: 1px solid lightgrey;
+      }
+    }
+    &__time{
+      padding-right: 10px;
+      text-align: right;
+    }
+  }
+}
+.showContainer{
+  max-width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 0 150px;
+}
+.restaurantShow{
+  display: inline-block;
+  margin: 60px 0;
+}
+
+.showTitle{
+  padding: 50px;
+  text-align: center;
+  font-size: 50px;
+  &__last{
+    display:inline-block;
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width:1200px){
+  .card{
+    position: static;
+    
+    // outline: 1px solid red;
+    width: 550px;
+    &__left{
+      display: block;
+      width: 100%;
+      height: 250px;
+      position: static;
+      box-shadow: 4px 4px 10px 5px lightgray;
+      &__mask{
+        display:none;
+      }
+    }
+    &__right{
+      display: block;
+      position: static;
+      width: 100%;
+      border: 1px solid lightgrey;
+      border-top: 0px;
+      border-radius: 0px 0px 65px 0px/0px 0px 65px 0px;
+      box-shadow: 4px 4px 10px 5px lightgray;
+    }
+  }
+
+}
+@media screen and (max-width:900px){
+  .showTitle__last{
+    display:block;
+  }
+}
+
+@media screen and (max-width:850px){
+  .geolocation{
+    padding: 165px 10px 110px;
+  }
+  .showTitle{
+    font-size: 38px;
+    &__last{
+      font-size:38px;
+    }
+}
+@media screen and (max-width:767px){
+  .card{
+    width: 350px;
+  }
+  .geolocation{
+    max-width: 94vw;
+  }
+  .card__right__address{
+    font-size: 20px;
+  }
+  .showTitle{
+    font-size: 27px;
+    &__last{
+      font-size:27px;
+    }
+  }
+}
+@media screen and (max-width:410px){
+  .card{
+    width: 285px;
+  }
+  .geolocation{
+    max-width: 97vw;
+  }
+  .card__right__name{
+    font-size: 20px;
+  }
+  .card__right__address{
+    font-size: 17px;
+  }
+  
+  }
+}
+
+// ################# new ###################################
+
+.newTitle{
+  padding: 50px;
+  text-align: center;
+  font-size: 50px;
+  &__last{
+    display:inline-block;
+    font-size: 50px;
+  }
+}
+.newContainer{
+  margin: 60px auto;
+  width: 1070px;
+  // font-size: 0px;
+}
+.cuisine{
+  margin: 15px;
+  width: 500px;
+  height: 600px;
+  display: inline-block;
+  box-shadow: 4px 4px 10px 5px lightgray;
+  &__image{
+    height: 50%;
+  }
+  &__bottom{
+    padding: 15px 20px;
+    &__name{
+      font-size: 30px;
+      line-height: 1.5em;
+    }
+    &__discription{
+      font-size: 26px;
+      height: 160px;
+      overflow: hidden;
+    }
+    &__price{
+      font-size: 30px;
+      text-align: right;
+      float: right;
+    }
+  }
+}
+input[type=number]:not(.browser-default), input[type=time]:not(.browser-default){
+  text-align: right;
+  width: 150px;
+  font-size: 30px;
+  padding-right: 10px;
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  margin: 0;
+}
+.button{
+  text-align: center;
+  line-height: 46px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  // margin: 5px;
+  font-size: 40px;
+  background-color: #b4bea3;
+  border-radius: 50%;
+  vertical-align: middle;
+  &:hover{
+    cursor: pointer;
+  }
+}
+// これがないとなぜがずれる
+// div{
+//   font-size: 0px;
+// }
+#cuisinesTotalSet{
+  text-align: right;
+  margin-top: 75px;
+  margin-right: 35px;
+}
+#cusinesTitle, #cuisinesTotal, #cuisinesYen{
+  display: inline-block;
+  font-size: 33px;
+  font-weight: bold;
+}
+@media screen and (max-width:1200px){
+  *.cuisine{
+    display: block;
+    margin: 40px auto;
+    font-size: 30px;
+  }
+  .newContainer{
+    width: 95vw;
+  }
+}
+
+
+.newButtons{
+  margin: 150px auto 250px;
+  display: flex;
+  justify-content: center;
+  &__button{
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 30px;
+    margin: 0 20px;
+    background-color: $green;
+    color: white;
+    box-shadow: 4px 4px 10px 5px lightgray;
+    &:nth-of-type(2){
+      color: black;
+    }
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width:900px){
+  .newTitle__last{
+    display:block;
+  }
+}
+@media screen and (max-width:767px){
+  .cuisine{
+    margin: 15px auto;
+    width: 380px;
+    height: 700px;
+  }
+  .newContainer{
+    margin: 60px auto;
+    width: 99vw;
+  }
+  input[type=number]:not(.browser-default){
+    width: 70px;
+  }
+  .newButtons{
+    display: block;
+    
+  }
+  .cuisine__image{
+    height: 42%;
+    
+  }
+  .newButtons__button{
+    display: block;
+    margin: 30px auto;
+    font-size: 21px;
+
+
+  }
+  .newTitle{
+    font-size: 40px;
+    &__last{
+      font-size: 40px;
+    }
+  }
+  
+}
+@media screen and (max-width:410px){
+  .cuisine{
+    margin: 15px auto;
+    width: 310px;
+    height: 720px;
+    &__image{
+      height: 35%;
+    }
+  }
+  .newButtons__button{
+    display: block;
+    margin: 30px auto;
+    font-size: 16px;
+  }
+  .cuisine__bottom__price{
+    display: block;
+    clear: both;
+    float: none;
+    margin-bottom: 10px;
+
+  }
+  #cusinesTitle, #cuisinesTotal, #cuisinesYen{
+    font-size: 28px;
+  }
+  .newTitle{
+    font-size: 30px;
+    &__last{
+      font-size: 30px;
+    }
+  }
+}
+
+
+
+
+//  ######## pay_new ##################
+
+.payNewTitle, .payNewTitle__first{
+  font-size: 50px;
+  text-align: center;
+  margin: 50px 0 25px;
+  &__last{
+    font-size: 50px;
+    display: inline-block;
+    // display: inline-block;
+    &:after{
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin-top: 10px;
+      background: linear-gradient(to right, $red1, $red2, rgb(234, 225, 225), $red3);
+      animation: anime1 5s linear 0s infinite normal;
+    }
+  }
+  
+}
+@keyframes anime1 {
+  0% {background: linear-gradient(to right, $red2, rgb(234, 225, 225), $red3, $red1);}
+  25% {background: linear-gradient(to right, rgb(234, 225, 225), $red3, $red1, $red2);}
+  50% {background: linear-gradient(to right,  $red3, $red1, $red2, rgb(234, 225, 225));}
+  100% {background: linear-gradient(to right, $red1, $red2, rgb(234, 225, 225), $red3, );}
+}
+.payNewAddress{
+  text-align: center;
+  margin-bottom:20px;
+  max-width: 70vw;
+  margin: 20px auto;
+}
+.payNewTime{
+  text-align: center;
+  margin-bottom:60px;
+}
+#walk, #drive{
+  display: inline-block;
+}
+#payNewForm{
+  vertical-align: top;
+  max-width: 90vw;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+.orderCuisine{
+  margin-bottom: 20px;
+  position: relative;
+  &__name{
+    line-height: 1.6em;
+    font-size: 28px;
+    background-color: rgb(234, 225, 225);
+  }
+  &__priceNumber{
+    line-height: 1.6em;
+    padding-left: 10px;
+    font-size: 28px;
+  }
+  &__link{
+    position: absolute;
+    right: -40px;
+    top: 50%;
+  }
+}
+.orderTotal{
+  line-height: 1.6em;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 28px;
+  border-bottom: 2px solid $red1;
+}
+.leftContainer{
+  display: inline-block;
+  margin: 0 120px 0 80px;
+  
+}
+
+.rightContainer{
+  display: inline-block;
+  text-align: center;
+  &__geolocation{
+    margin: 0 auto;
+  }
+  &__time, &> span{
+    font-size: 24px;
+    line-height: 2em;
+  }
+  &__geolocation{
+    margin: 0 80px;
+  }
+  &__answer{
+    line-height: 1.6em;
+    display: none;
+    margin: 20px 0;
+    &__walk, &__car{
+      line-height: 1.6em;
+    }
+  }
+}
+#payNew__geolocation__button{
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 21px;
+  background-color: $red2;
+  color: rgb(73, 9, 9);
+  border: 4px solid $red2;
+  margin: 40px auto;
+}
+
+#payjp_checkout_box{
+  margin: 50px 0;
+  &>input[type="button"]{
+    background-image: none;
+    background-color: $red1;
+    font-size: 28px;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+.rightContainer__time > span{
+  font-size: 24px;
+  line-height: 2em;
+}
+
+.cuisine_number{
+  border-color: red;
+}
+
+@media screen and (max-width:870px){
+  .rightContainer__time > span{
+    display: block;
+  }
+}
+
+@media screen and (max-width:767px){
+  #payNewForm{
+    display: block;
+  }
+  .rightContainer, .leftContainer{
+    display: block;
+    margin: 30px 15px;
+  }
+  .payNewTitle, .payNewTitle__first{
+    font-size: 35px;
+    // margin: 50px 0 25px;
+    &__last{
+      font-size: 35px;
+    }
+  }
+}
+
+// ####### pay_index ###################
+.resTitle{
+  text-align: center;
+  font-size: 40px;
+  margin-top: 50px;
+}
+.resWrapper{
+  border: 1px solid lightgrey;
+  width: 700px;
+  margin: 80px auto;
+  font-size: 0;
+  display: block;
+  
+  
+  &__left{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    &__name{
+      font-size: 25px;
+      line-height: 1.5em;
+    }
+    &__address{
+      line-height: 1.5em;
+    }
+    &__time{
+      line-height: 1.5em;
+    }
+  }
+  &__right{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    background-color: white;
+    &__name{
+      padding-left: 15px;
+    }
+  }
+}

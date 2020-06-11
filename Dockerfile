@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash 
 RUN apt-get install -y nodejs
 RUN apt-get install -y npm
+RUN apt-get install -y vim
 
 COPY Gemfile $APP_ROOT
 COPY Gemfile.lock $APP_ROOT

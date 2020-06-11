@@ -1,0 +1,267 @@
+@import "colors";
+
+.signinLogin{
+  margin: 120px auto 0;
+  width: 600px;
+  &__content{
+    padding: 11px 0;
+    & > label{
+      padding: 7px 5px;
+      display: inline-block;
+      font-size: 22px;
+    }
+    &__text{
+      padding: 0 10px;
+      height: 37px;
+      border-radius: 5px;
+      -webkit-appearance: none;
+      appearance: none;
+      font-size: 22px;
+      border: 2px solid black;
+      background-color: black;
+      width: 600px;
+    }
+    & input[type="submit"]{
+      float: right;
+      border-radius: 10px;
+      line-height: 35px;
+      padding: 0 24px;
+      font-size: 19px;
+      background-color: rgb(115, 126, 109);
+      color:  white;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+  &__contentCheck{
+    position: relative;
+    &__check{
+      display: none;
+    }
+    & input[type="checkbox"]+label{
+      margin-left: 50px;
+    }
+    & input[type="checkbox"]+label:before{
+      content: "";
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      border-radius: 5px;
+      width: 22px;
+      height: 22px;
+      border: 2px solid black;
+      vertical-align: bottom;
+    }
+    & input[type="checkbox"]:checked+label:before{
+      position: absolute;
+      height: 13px;
+      top: 30%;
+      transform: rotate(-45deg);
+      border-top: none;
+      border-right: none;
+      border-radius: 0;
+    }
+  }
+}
+
+input:-webkit-autofill {
+  animation-name: onAutoFillStart;
+  transition: background-color 50000s ease-in-out 0s;
+}
+
+@keyframes onAutoFillStart { from {} to {}}
+
+#new_restaurant{
+  margin: 40px 0 80px;
+}
+
+.image_input_btn{
+  display: block;
+  background-color: $green;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 2px 10px 0;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.image_form{
+  display: none;
+}
+
+select{
+  display: block;
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  margin: 30 0;
+}
+.signinLogin__content__select{
+  
+  padding-right: 1em;
+  cursor: pointer;
+  padding: 0 15px;
+  // -webkit-appearance: none;
+  // appearance: none;
+  font-size: 22px;
+  border: 2px solid black;
+}
+
+
+input[type=time]:not(.browser-default){
+  text-align: right;
+  width: 150px;
+  font-size: 30px;
+  padding-right: 10px;
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  margin: 0;
+}
+
+.signinLogin__content{
+  text-align: center;
+}
+
+.main{
+  margin: 50px 0;
+}
+
+
+.footer, .header__cart{
+  display: none;
+}
+
+input[type=text]:not(.browser-default), input[type=email]:not(.browser-default), input[type=password]:not(.browser-default){
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  // width: 95vw;
+}
+// input[type=text]:not(.browser-default){
+//   width: 90vw;
+// }
+.geolocation{
+  text-align: center;
+  position: relative;
+  &__button{
+    background-color: $green;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 38px;
+    padding: 8px 15px;
+    margin: 70px 0;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+
+.arrow{
+  // display: none;
+  position: absolute;
+  bottom: 120px;
+  left: 35%;
+  width: 73px;
+  height: 135px;
+  z-index: 1000;
+}
+.scroll{
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  font-size: 30px;
+  text-align: center;
+  animation: scroll1 2.5s ease 0s infinite;
+}
+@keyframes scroll1 {
+  0% {font-size: 28px; color: rgb(235, 235, 235);}
+  100% {font-size: 20px; color: rgb(165, 165, 165);}
+}
+.arrowUpper{
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top:  12%;
+  height: 60px;
+  width: 3px;
+  background-color: rgb(167, 167, 167);
+  animation: arrow1 2.5s ease 0s infinite;
+}
+@keyframes arrow1 {
+  0% {height: 40px; background-color: rgb(235, 235, 235);}
+  100% {height: 100px; background-color: rgb(165, 165, 165);}
+}
+.arrowDowner{
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: calc(12% + 40px);
+  height: 10px;
+  width: 10px;
+  border-top: 10px solid #000000;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  animation: arrow2 2.5s ease 0s infinite;
+}
+@keyframes arrow2 {
+  0% {top: calc(12% + 40px); border-top: 10px solid rgb(235, 235, 235);}
+  100% {top: calc(12% + 100px); border-top: 10px solid rgb(165, 165, 165);}
+}
+
+
+.signinLogin__button{
+  margin: 70px 90px;
+}
+
+.signinLogin__signup{
+  margin-bottom: 150px;
+}
+
+.signinLogin__image{
+  margin: 50px 0;
+}
+textarea{
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  border-left: none;
+  border-top: none;
+}
+@media screen and (max-width:1100px){
+  .arrow{
+    left: 28%;
+  }
+  .geolocation__button{
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width:767px){
+  .signinLogin{
+    width: 90vw;
+  }
+  .arrow{
+    display: none;
+  }
+  .geolocation__button{
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width:413px){
+  .header__info__left{
+    display: inline-block;
+  }
+  .signinLogin__content > label{
+    font-size: 20px;
+  }
+  .geolocation__button{
+    font-size: 20px;
+  }
+}

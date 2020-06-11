@@ -1,3 +1,93 @@
-// Place all the styles related to the cuisines controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "colors";
+
+// ############# new ###################################
+
+input{
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  width: 90vw;
+}
+.newCuisinesContainer{
+  width: 85vw;
+  margin: 0px auto;
+}
+.newCuisinesTitle{
+  text-align: center;
+  font-size: 46px;
+  margin: 60px 0;
+}
+.newCuisinesForm{
+  text-align: center;
+  
+  &__content, &__content > span{
+    text-align: center;
+    font-size: 35px;
+    line-height: 2em;
+    &__title{
+      font-size: 35px;
+      margin: 55px 0;
+    }
+    // outline: 1px solid red;
+  }
+}
+input[type="submit"]{
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: rgb(115, 126, 109);
+  color:  white;
+  font-size: 45px;
+  width: initial;
+  margin: 90px auto 130px;
+  
+}
+
+.image_input_btn{
+  width: 250px;
+  display: block;
+  background-color: $green;
+  margin: 70px auto;
+  border-radius: 5px;
+  padding: 2px 10px 0;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.image_form{
+  display: none;
+}
+
+input[type=text]:not(.browser-default), textarea{
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  font-size: 30px;
+}
+
+textarea{
+  min-height: 400px;
+  border-top: none;
+  border-left: none;
+}
+
+input[type=number]:not(.browser-default), input[type=number]:not(.browser-default){
+  width: 250px;
+  border-bottom: 3px solid #b4bea3;
+  border-right: 1px solid #b4bea3;
+  font-size: 30px;
+}
+
+.header__cart{
+  display: none;
+}
+
+
+
+@media screen and (max-width:767px){
+  .newCuisinesForm__content > span{
+    display: block;
+  }
+}
