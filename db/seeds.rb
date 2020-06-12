@@ -12,7 +12,7 @@ restaurant = Restaurant.new(
 minute = [0,15,30,45]
 restaurant.build_place(
   {
-    address: "東京都文京区大塚99-99-99",
+    address: "日本、〒999-9999 東京都東京区東京99丁目99−番99号",
     latitude: rand(35.59..35.76),
     longitude: rand(139.61..139.76),
     start: "#{rand(0..12)}:#{minute[rand(0..3)]}",
