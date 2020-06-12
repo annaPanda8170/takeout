@@ -76,7 +76,7 @@ https://takeout.annapanda.xyz/
 ### 【会員登録】
 <br>
 <br>
-<div><img src="https://gyazo.com/4129a7456f3240b8cd7b75576328b183/raw" height="200px" align="left" magin-right="100px"><span height="200px" align="left" >会員登録、ログインのボタンは下にあります。注文者が間違って入らない為の配慮です。<br>店名・ジャンル・Eメール・パスワード・画像で1ページ目、2ページ目では時間と場所を登録します。<br>画像はなくて登録出来ます。<br>現在地は緯度経度で取得してますが、注文者側が取りに行く為に住所の記載が必要なので、ダブルで保存しています。建物の階は取得出来ないので手入力になります。</span><img src="https://gyazo.com/82da959cef7aac7357747b5b11afa402/raw" height="200px" align="right"><br clear="all"></div>
+<div><img src="https://gyazo.com/4129a7456f3240b8cd7b75576328b183/raw" height="200px" align="left" magin-right="100px">会員登録、ログインのボタンは下にあります。注文者が間違って入らない為の配慮です。<br>店名・ジャンル・Eメール・パスワード・画像で1ページ目、2ページ目では時間と場所を登録します。<br>画像はなくて登録出来ます。<br>現在地は緯度経度で取得してますが、注文者側が取りに行く為に住所の記載が必要なので、ダブルで保存しています。建物の階は取得出来ないので手入力になります。<img src="https://gyazo.com/82da959cef7aac7357747b5b11afa402/raw" height="200px" align="right"><br clear="all"></div>
 <br>
 
 ### 【料理登録】
